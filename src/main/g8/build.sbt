@@ -14,7 +14,7 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-hive" % "$spark_version$" % Provided
 )
 
-initialCommands in console :=
+console / initialCommands :=
 """
 import java.net._
 import geotrellis.layer._
@@ -30,7 +30,7 @@ Test / fork := true
 Test / outputStrategy := Some(StdoutOutput)
 
 // Settings for sbt-assembly plugin which builds fat jars for spark-submit
-assemblyMergeStrategy in assembly := {
+assembly / assemblyMergeStrategy := {
   case "reference.conf"   => MergeStrategy.concat
   case "application.conf" => MergeStrategy.concat
   case PathList("META-INF", xs @ _*) =>
